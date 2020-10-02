@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов» [![Build status][travis-image]][travis-url]
 
 * Студент: [Евгений Филатов](https://up.htmlacademy.ru/react/5/user/68634).
-* Наставник: `Неизвестно`.
+* Наставник: [Евгений Карагодин](https://htmlacademy.ru/profile/ekaragodin).
 
 ---
 
