@@ -1,10 +1,12 @@
 import React from "react";
 import Page from "../page/page";
 
-const App = () => {
+const App = (props) => {
+  const {rentOfferAmount} = props;
+
 
   return (
-    <Page/>
+    <Page rentOfferAmount = {rentOfferAmount}/>
   );
 };
 
