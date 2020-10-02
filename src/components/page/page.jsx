@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Page = (props) => {
   const {rentOfferAmount} = props;
@@ -272,6 +273,10 @@ const Page = (props) => {
       </main>
     </div>
   );
+};
+
+Page.propTypes = {
+  rentOfferAmount: PropTypes.number.isRequired,
 };
 
 export default Page;
