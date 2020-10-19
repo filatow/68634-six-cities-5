@@ -1,7 +1,9 @@
 import allReviews from "./reviews";
+// import getUniqueId from "../utils";
 
 export default [
   {
+    id: `0`,
     photos: [
       `https://picsum.photos/260/200?grayscale`,
       `https://picsum.photos/260/200?grayscale`,
@@ -17,7 +19,7 @@ export default [
       Congue nisi vitae suscipit tellus mauris a diam maecenas sed.
       Donec enim diam vulputate ut pharetra sit.`,
     isPremium: false,
-    type: `apartment`,
+    type: `Apartment`,
     rating: 4.4,
     bedroomCount: 2,
     guestCount: 3,
@@ -44,6 +46,7 @@ export default [
     ]
   },
   {
+    id: `1`,
     photos: [
       `https://picsum.photos/260/200?grayscale`,
       `https://picsum.photos/260/200?grayscale`,
@@ -62,7 +65,7 @@ export default [
       Ac placerat vestibulum lectus mauris ultrices eros.
       Viverra aliquet eget sit amet tellus cras adipiscing enim eu.`,
     isPremium: true,
-    type: `room`,
+    type: `Room`,
     rating: 4.8,
     bedroomCount: 1,
     guestCount: 2,
@@ -87,6 +90,7 @@ export default [
     ]
   },
   {
+    id: `2`,
     photos: [
       `https://picsum.photos/260/200?grayscale`,
       `https://picsum.photos/260/200?grayscale`,
@@ -109,7 +113,7 @@ export default [
       Consequat ac felis donec et odio pellentesque diam volutpat.
       Et netus et malesuada fames ac turpis egestas.`,
     isPremium: false,
-    type: `house`,
+    type: `House`,
     rating: 4.7,
     bedroomCount: 4,
     guestCount: 7,
@@ -136,6 +140,7 @@ export default [
     ]
   },
   {
+    id: `3`,
     photos: [
       `https://picsum.photos/260/200?grayscale`,
       `https://picsum.photos/260/200?grayscale`,
@@ -151,8 +156,8 @@ export default [
       Placerat vestibulum lectus mauris ultrices eros in cursus turpis massa.
       Amet porttitor eget dolor morbi.`,
     isPremium: true,
-    type: `hotel`,
-    rating: 4.9,
+    type: `Hotel`,
+    rating: 3.4,
     bedroomCount: 1,
     guestCount: 2,
     rentPerNight: 120,
