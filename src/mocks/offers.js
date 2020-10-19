@@ -17,7 +17,7 @@ export default [
       Congue nisi vitae suscipit tellus mauris a diam maecenas sed.
       Donec enim diam vulputate ut pharetra sit.`,
     isPremium: false,
-    type: `apartament`,
+    type: `apartment`,
     rating: 4.4,
     bedroomCount: 2,
     guestCount: 3,
