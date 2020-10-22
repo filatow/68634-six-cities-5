@@ -4,7 +4,7 @@ import {OfferType} from "./consts";
 export const Validation = {
   OFFER: PropTypes.shape({
     id: PropTypes.string.isRequired,
-    photos: PropTypes.array.isRequired,
+    photos: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
     header: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     isPremium: PropTypes.bool.isRequired,

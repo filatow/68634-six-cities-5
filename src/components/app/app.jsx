@@ -4,30 +4,37 @@ import {BrowserRouter, Switch, Route} from "react-router-dom";
 import Main from "../main/main";
 import SignIn from "../sign-in/sign-in";
 import Favorites from "../favorites/favorites";
-import Room from "../room/room";
+import Place from "../place/place";
 
-// import {Validation} from "../../validation";
 import {Validation} from "../../validation";
 
 const App = (props) => {
-  const {rentOfferAmount, offers} = props;
+  const {offers} = props;
 
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
           <Main
-            rentOfferAmount = {rentOfferAmount}
             offers = {offers} />
         </Route>
+        {/* <Route exact
+          path="/"
+          render={({history}) => (
+            <Main
+              onCardClick ={() => history.push(`/offer/1`)}
+              offers = {offers} />
+          )} /> */}
         <Route exact path="/login">
           <SignIn/>
         </Route>
         <Route exact path="/favorites">
-          <Favorites/>
+          <Favorites
+            offers = {offers}/>
         </Route>
         <Route exact path="/offer/:id">
-          <Room/>
+          <Place
+            offer = {offers[1]}/>
         </Route>
       </Switch>
     </BrowserRouter>
@@ -35,7 +42,6 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  rentOfferAmount: PropTypes.number.isRequired,
   offers: PropTypes.arrayOf(Validation.OFFER).isRequired
 };
 

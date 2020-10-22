@@ -1,8 +1,8 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-// import {OfferType} from "../../consts";
 
 import {Validation} from "../../validation";
+import {Link} from "react-router-dom";
 
 export default class OfferCard extends PureComponent {
   constructor() {
@@ -27,9 +27,9 @@ export default class OfferCard extends PureComponent {
         onMouseEnter={handleCardMouseEnter} >
         {isPremium ? premiumMark : ``}
         <div className="cities__image-wrapper place-card__image-wrapper">
-          <a href="#">
+          <Link to="/offer/1">
             <img className="place-card__image" src={photos[0]} width="260" height="200" alt="Place image"/>
-          </a>
+          </Link>
         </div>
         <div className="place-card__info">
           <div className="place-card__price-wrapper">
@@ -51,7 +51,7 @@ export default class OfferCard extends PureComponent {
             </div>
           </div>
           <h2 className="place-card__name">
-            <a href="#">{header}</a>
+            <Link to="/offer/1">{header}</Link>
           </h2>
           <p className="place-card__type"> {type} </p>
         </div>

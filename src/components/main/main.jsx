@@ -3,11 +3,12 @@ import PropTypes from "prop-types";
 import OfferList from "../offer-list/offer-list";
 
 import {Validation} from "../../validation";
+import {Link} from "react-router-dom";
 
-// import {OfferType} from "../../consts";
 
 const Main = (props) => {
-  const {rentOfferAmount, offers} = props;
+  const {offers} = props;
+  const offerAmount = offers.length;
 
   return (
     <div className="page page--gray page--main">
@@ -23,11 +24,13 @@ const Main = (props) => {
             <nav className="header__nav">
               <ul className="header__nav-list">
                 <li className="header__nav-item user">
-                  <a className="header__nav-link header__nav-link--profile" href="#">
+                  <Link to="/favorites" className="header__nav-link header__nav-link--profile">
                     <div className="header__avatar-wrapper user__avatar-wrapper">
                     </div>
-                    <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                  </a>
+                    <span className="header__user-name user__name">
+                      Oliver.conner@gmail.com
+                    </span>
+                  </Link>
                 </li>
               </ul>
             </nav>
@@ -77,7 +80,7 @@ const Main = (props) => {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{rentOfferAmount} places to stay in Amsterdam</b>
+              <b className="places__found">{offerAmount} places to stay in Amsterdam</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex="0">
@@ -115,7 +118,6 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  rentOfferAmount: PropTypes.number.isRequired,
   offers: PropTypes.arrayOf(Validation.OFFER).isRequired
 };
 

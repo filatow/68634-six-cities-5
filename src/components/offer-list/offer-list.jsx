@@ -2,8 +2,6 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import OfferCard from "../offer-card/offer-card";
 
-// import {OfferType} from "../../consts";
-// import {getUniqueId} from "../../utils";
 import {Validation} from "../../validation";
 
 export default class OfferList extends PureComponent {
@@ -27,7 +25,6 @@ export default class OfferList extends PureComponent {
 
   render() {
     const {offers} = this.props;
-
     const placesList = offers.map((offer) => {
       return (
         <OfferCard
