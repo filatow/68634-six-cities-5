@@ -2,11 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/app/app";
 
-const Settings = {
-  RENT_OFFER_AMOUNT: 312,
-};
+import offers from "./mocks/offers";
+
 
 ReactDOM.render(
-    <App rentOfferAmount = {Settings.RENT_OFFER_AMOUNT}/>,
+    <App
+      offers = {offers} />,
     document.querySelector(`#root`)
 );
