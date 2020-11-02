@@ -4,11 +4,15 @@ import OfferList from "../offer-list/offer-list";
 
 import {Validation} from "../../validation";
 import {Link} from "react-router-dom";
+import Map from "../map/map";
 
 
 const Main = (props) => {
   const {offers} = props;
   const offerAmount = offers.length;
+  const markerCoords = offers.map((offer) => {
+    return offer.coords;
+  });
 
   return (
     <div className="page page--gray page--main">
@@ -108,7 +112,9 @@ const Main = (props) => {
                 offers = {offers} />
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <section className="cities__map map">
+                <Map markerCoords={markerCoords} />
+              </section>
             </div>
           </div>
         </div>
