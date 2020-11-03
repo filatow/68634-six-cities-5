@@ -14,7 +14,7 @@ export default class Map extends PureComponent {
 
   componentDidMount() {
     const {
-      markerCoords,
+      markers,
       city,
       zoom = 12} = this.props;
 
@@ -37,7 +37,7 @@ export default class Map extends PureComponent {
       })
       .addTo(map);
 
-    markerCoords.forEach((coords) => {
+    markers.forEach((coords) => {
       this.addMarker(map, coords, icon);
     });
   }
@@ -51,7 +51,7 @@ export default class Map extends PureComponent {
 
 
 Map.propTypes = {
-  markerCoords: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
+  markers: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
   city: PropTypes.arrayOf(PropTypes.number),
   zoom: PropTypes.number
 };

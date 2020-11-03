@@ -11,7 +11,7 @@ import {AMSTERDAM_COORDS} from "../../consts";
 const Main = (props) => {
   const {offers} = props;
   const offerAmount = offers.length;
-  const markerCoords = offers.map((offer) => {
+  const offersCoords = offers.map((offer) => {
     return offer.coords;
   });
 
@@ -115,7 +115,7 @@ const Main = (props) => {
             <div className="cities__right-section">
               <section className="cities__map map">
                 <Map
-                  markerCoords={markerCoords}
+                  markers={offersCoords}
                   city={AMSTERDAM_COORDS} />
               </section>
             </div>

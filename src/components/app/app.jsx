@@ -4,7 +4,7 @@ import {BrowserRouter, Switch, Route} from "react-router-dom";
 import Main from "../main/main";
 import SignIn from "../sign-in/sign-in";
 import Favorites from "../favorites/favorites";
-import Place from "../property/property";
+import Property from "../property/property";
 
 import {Validation} from "../../validation";
 
@@ -30,11 +30,12 @@ const App = (props) => {
         </Route>
         <Route exact path="/favorites">
           <Favorites
-            offers = {offers}/>
+            offers={offers}/>
         </Route>
         <Route exact path="/offer/:id">
-          <Place
-            offer = {offers[1]}/>
+          <Property
+            offer={offers[0]}
+            neighbourOffers={offers.slice(1)} />
         </Route>
       </Switch>
     </BrowserRouter>

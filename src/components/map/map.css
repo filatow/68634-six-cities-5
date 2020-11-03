@@ -1,4 +1,5 @@
-.cities__map {
+.cities__map,
+.property__map {
   position: relative;
 }
 

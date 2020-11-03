@@ -1,14 +1,17 @@
 import React from "react";
 import {Link} from "react-router-dom";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 import {getUniqueId} from "../../utils";
 import {Validation} from "../../validation";
 
+import Map from "../map/map";
 import ReviewList from "../review-list/review-list";
 
+import {AMSTERDAM_COORDS} from "../../consts";
+
 const Property = (props) => {
-  const {offer} = props;
+  const {offer, neighbourOffers} = props;
   const {
     photos, header, isPremium, type, bedroomCount, rating, guestCount,
     rentPerNight, amenities, host, description, reviews} = offer;
@@ -37,6 +40,10 @@ const Property = (props) => {
     );
   });
   const superHostClass = host.isSuper ? `property__avatar-wrapper--pro` : ``;
+  const neighbourOffersCoords = neighbourOffers.map((neighbourOffer) => {
+    return neighbourOffer.coords;
+  });
+
 
   return (
     <div className="page">
@@ -137,7 +144,11 @@ const Property = (props) => {
 
             </div>
           </div>
-          <section className="property__map map"></section>
+          <section className="property__map map">
+            <Map
+              markers={neighbourOffersCoords}
+              city={AMSTERDAM_COORDS} />
+          </section>
         </section>
         <div className="container">
           <section className="near-places places">
@@ -256,7 +267,8 @@ const Property = (props) => {
 };
 
 Property.propTypes = {
-  offer: Validation.OFFER
+  offer: Validation.OFFER,
+  neighbourOffers: PropTypes.arrayOf(Validation.OFFER)
 };
 
 export default Property;
