@@ -4,7 +4,7 @@ import {BrowserRouter, Switch, Route} from "react-router-dom";
 import Main from "../main/main";
 import SignIn from "../sign-in/sign-in";
 import Favorites from "../favorites/favorites";
-import Place from "../place/place";
+import Place from "../property/property";
 
 import {Validation} from "../../validation";
 

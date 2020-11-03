@@ -5,9 +5,9 @@ import {Link} from "react-router-dom";
 import {getUniqueId} from "../../utils";
 import {Validation} from "../../validation";
 
-import NewCommentForm from "../new-comment-form/new-comment-form";
+import ReviewList from "../review-list/review-list";
 
-const Room = (props) => {
+const Property = (props) => {
   const {offer} = props;
   const {
     photos, header, isPremium, type, bedroomCount, rating, guestCount,
@@ -37,36 +37,6 @@ const Room = (props) => {
     );
   });
   const superHostClass = host.isSuper ? `property__avatar-wrapper--pro` : ``;
-  const placeReviews = reviews.map((review) => {
-    const {avatar, author, rating: reviewRaiting, time, text} = review;
-    return (
-      <li
-        className="reviews__item"
-        key={getUniqueId()}>
-        <div className="reviews__user user">
-          <div className="reviews__avatar-wrapper user__avatar-wrapper">
-            <img className="reviews__avatar user__avatar" src={avatar} width="54" height="54" alt="Reviews avatar"/>
-          </div>
-          <span className="reviews__user-name">
-            {author}
-          </span>
-        </div>
-        <div className="reviews__info">
-          <div className="reviews__rating rating">
-            <div className="reviews__stars rating__stars">
-              <span style={{width: `${reviewRaiting * 2 * 10}%`}}></span>
-              <span className="visually-hidden">Rating</span>
-            </div>
-          </div>
-          <p className="reviews__text">
-            {text}
-          </p>
-          <time className="reviews__time" dateTime="2019-04-24">{time}</time>
-        </div>
-      </li>
-    );
-  });
-
 
   return (
     <div className="page">
@@ -161,13 +131,10 @@ const Room = (props) => {
                   </p>
                 </div>
               </div>
-              <section className="property__reviews reviews">
-                <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span></h2>
-                <ul className="reviews__list">
-                  {placeReviews}
-                </ul>
-                <NewCommentForm />
-              </section>
+
+              <ReviewList
+                reviews={reviews} />
+
             </div>
           </div>
           <section className="property__map map"></section>
@@ -288,8 +255,8 @@ const Room = (props) => {
   );
 };
 
-Room.propTypes = {
+Property.propTypes = {
   offer: Validation.OFFER
 };
 
-export default Room;
+export default Property;
