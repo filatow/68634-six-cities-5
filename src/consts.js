@@ -12,3 +12,5 @@ export const Grade = {
   BADLY: `badly`,
   TERRIBLY: `terribly`,
 };
+
+export const AMSTERDAM_COORDS = [52.38333, 4.9];

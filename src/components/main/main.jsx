@@ -6,6 +6,7 @@ import {Validation} from "../../validation";
 import {Link} from "react-router-dom";
 import Map from "../map/map";
 
+import {AMSTERDAM_COORDS} from "../../consts";
 
 const Main = (props) => {
   const {offers} = props;
@@ -113,7 +114,9 @@ const Main = (props) => {
             </section>
             <div className="cities__right-section">
               <section className="cities__map map">
-                <Map markerCoords={markerCoords} />
+                <Map
+                  markerCoords={markerCoords}
+                  city={AMSTERDAM_COORDS} />
               </section>
             </div>
           </div>
