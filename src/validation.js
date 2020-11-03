@@ -28,5 +28,12 @@ export const Validation = {
       time: PropTypes.string.isRequired,
       text: PropTypes.string.isRequired
     }).isRequired).isRequired
+  }).isRequired,
+  REVIEW: PropTypes.shape({
+    avatar: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    time: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired
   }).isRequired
 };
