@@ -13,4 +13,9 @@ export const Grade = {
   TERRIBLY: `terribly`,
 };
 
+export const CardType = {
+  CITY: `city`,
+  NEAR: `near`
+};
+
 export const AMSTERDAM_COORDS = [52.38333, 4.9];

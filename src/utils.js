@@ -5,3 +5,7 @@ export const getUniqueId = () => {
       return v.toString(16);
     });
 };
+export const getStarsActiveWidth = (rating) => {
+  return (Math.round(rating) * 2 * 10);
+};
+

@@ -1,10 +1,10 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-import OfferCard from "../offer-card/offer-card";
+import CityPlaceCard from "../city-place-card/city-place-card";
 
 import {Validation} from "../../validation";
 
-export default class OfferList extends PureComponent {
+export default class CityPlaceList extends PureComponent {
   constructor(props) {
     super();
     this.state = {
@@ -25,23 +25,23 @@ export default class OfferList extends PureComponent {
 
   render() {
     const {offers} = this.props;
-    const placesList = offers.map((offer) => {
+    const places = offers.map((offer) => {
       return (
-        <OfferCard
+        <CityPlaceCard
           key = {offer.id}
           offer = {offer}
-          handleCardMouseEnter = {this._handleCardMouseEnter} />
+          onMouseEnter = {this._handleCardMouseEnter} />
       );
     });
 
     return (
       <div className="cities__places-list places__list tabs__content">
-        {placesList}
+        {places}
       </div>
     );
   }
 }
 
-OfferList.propTypes = {
+CityPlaceList.propTypes = {
   offers: PropTypes.arrayOf(Validation.OFFER).isRequired
 };

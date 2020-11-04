@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import OfferList from "../offer-list/offer-list";
+import CityPlaceList from "../city-place-list/city-place-list";
 
 import {Validation} from "../../validation";
 import {Link} from "react-router-dom";
@@ -109,7 +109,7 @@ const Main = (props) => {
                 </select>
                 --> */}
               </form>
-              <OfferList
+              <CityPlaceList
                 offers = {offers} />
             </section>
             <div className="cities__right-section">

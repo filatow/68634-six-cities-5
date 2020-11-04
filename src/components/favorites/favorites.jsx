@@ -24,9 +24,6 @@ const Favorites = (props) => {
               <Link to="/" className="header__logo-link" href="main.html">
                 <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41"/>
               </Link>
-              {/* <a className="header__logo-link" href="main.html">
-                <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41"/>
-              </a> */}
             </div>
             <nav className="header__nav">
               <ul className="header__nav-list">
@@ -60,14 +57,11 @@ const Favorites = (props) => {
                   <article
                     className="favorites__card place-card"
                     id={id}>
-                    {isPremium ? premiumMark : ``}
+                    {isPremium && premiumMark}
                     <div className="favorites__image-wrapper place-card__image-wrapper">
                       <Link to="/offer/1">
                         <img className="place-card__image" src={photos[0]} width="150" height="110" alt="Place image"/>
                       </Link>
-                      {/* <a href="#">
-                        <img className="place-card__image" src={photos[0]} width="150" height="110" alt="Place image"/>
-                      </a> */}
                     </div>
                     <div className="favorites__card-info place-card__info">
                       <div className="place-card__price-wrapper">
@@ -89,7 +83,7 @@ const Favorites = (props) => {
                         </div>
                       </div>
                       <h2 className="place-card__name">
-                        <a href="#">{header}</a>
+                        <Link to="/offer/1">{header}</Link>
                       </h2>
                       <p className="place-card__type">{type}</p>
                     </div>
