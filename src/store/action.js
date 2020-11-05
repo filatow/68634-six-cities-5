@@ -1,6 +1,6 @@
 export const ActionType = {
   CHANGE_CITY: `CHANGE_CITY`,
-  GET_OFFERS: `GET_OFFERS`,
+  SET_OFFERS: `SET_OFFERS`,
 };
 
 export const ActionCreater = {
@@ -10,9 +10,9 @@ export const ActionCreater = {
       city
     };
   },
-  GET_OFFERS(offers) {
+  SET_OFFERS(offers) {
     return {
-      type: `GET_OFFERS`,
+      type: `SET_OFFERS`,
       offers
     };
   }

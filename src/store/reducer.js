@@ -14,7 +14,7 @@ const reducer = (state = initialState, action) => {
       return extend(state, {
         city: action.city
       });
-    case ActionType.GET_OFFERS:
+    case ActionType.SET_OFFERS:
       return extend(state, {
         offers: action.offers
       });
