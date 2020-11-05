@@ -9,14 +9,15 @@ import Property from "../property/property";
 import {Validation} from "../../validation";
 
 const App = (props) => {
-  const {offers} = props;
+  const {offers, cities} = props;
 
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
           <Main
-            offers = {offers} />
+            offers={offers}
+            cities={cities} />
         </Route>
         {/* <Route exact
           path="/"
@@ -43,7 +44,8 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  offers: PropTypes.arrayOf(Validation.OFFER).isRequired
+  offers: PropTypes.arrayOf(Validation.OFFER).isRequired,
+  cities: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
 };
 
 export default App;

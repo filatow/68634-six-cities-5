@@ -5,11 +5,12 @@ import CityPlaceList from "../city-place-list/city-place-list";
 import {Validation} from "../../validation";
 import {Link} from "react-router-dom";
 import Map from "../map/map";
+import LocationList from "../location-list/location-list";
 
 import {AMSTERDAM_COORDS} from "../../consts";
 
 const Main = (props) => {
-  const {offers} = props;
+  const {offers, cities} = props;
   const offerAmount = offers.length;
   const offersCoords = offers.map((offer) => {
     return offer.coords;
@@ -46,40 +47,10 @@ const Main = (props) => {
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
-          <section className="locations container">
-            <ul className="locations__list tabs__list">
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Paris</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Cologne</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Brussels</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item tabs__item--active">
-                  <span>Amsterdam</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Hamburg</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Dusseldorf</span>
-                </a>
-              </li>
-            </ul>
-          </section>
+
+          <LocationList
+            cities = {cities} />
+
         </div>
         <div className="cities">
           <div className="cities__places-container container">
@@ -127,7 +98,8 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  offers: PropTypes.arrayOf(Validation.OFFER).isRequired
+  offers: PropTypes.arrayOf(Validation.OFFER).isRequired,
+  cities: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
 };
 
 export default Main;

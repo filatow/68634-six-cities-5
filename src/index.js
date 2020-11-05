@@ -4,6 +4,7 @@ import {createStore} from "redux";
 import {Provider} from "react-redux";
 
 import {reducer} from "./store/reducer";
+import cities from "./mocks/cities";
 import offers from "./mocks/offers";
 import App from "./components/app/app";
 
@@ -15,7 +16,8 @@ const store = createStore(
 ReactDOM.render(
     <Provider store={store}>
       <App
-        offers = {offers} />,
-      document.querySelector(`#root`)
-    </Provider>
+        offers = {offers}
+        cities = {cities} />
+    </Provider>,
+    document.querySelector(`#root`)
 );
