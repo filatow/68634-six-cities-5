@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import NewCommentForm from "../new-comment-form/new-comment-form";
-import {getUniqueId} from "../../utils";
+// import {getUniqueId} from "../../utils";
 import {Validation} from "../../validation";
 import Review from "../review/review";
 
@@ -10,7 +10,7 @@ const ReviewList = ({reviews}) => {
   const propertyReviews = reviews.map((reviewData) => (
     <Review
       data={reviewData}
-      key={getUniqueId()} />
+      key={reviewData.id} />
   ));
 
   return (

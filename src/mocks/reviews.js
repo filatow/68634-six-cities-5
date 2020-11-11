@@ -1,5 +1,6 @@
 export default [
   {
+    id: `1`,
     avatar: `http://placebeard.it/g/54/54`,
     author: `Max`,
     rating: 4,
@@ -11,6 +12,7 @@ export default [
       maecenas pharetra convallis posuere morbi leo urna.`
   },
   {
+    id: `2`,
     avatar: `http://placebeard.it/g/54/54`,
     author: `Jhon`,
     rating: 5,
@@ -20,6 +22,7 @@ export default [
       Nisi porta lorem mollis aliquam ut. Nascetur ridiculus mus mauris vitae.`
   },
   {
+    id: `3`,
     avatar: `http://placebeard.it/g/54/54`,
     author: `Noah`,
     rating: 4,
@@ -28,6 +31,7 @@ export default [
       Et malesuada fames ac turpis egestas integer eget aliquet nibh.`
   },
   {
+    id: `4`,
     avatar: `http://placebeard.it/g/54/54`,
     author: `Donald`,
     rating: 2,
@@ -37,6 +41,7 @@ export default [
       a scelerisque purus semper eget.`
   },
   {
+    id: `5`,
     avatar: `http://placebeard.it/g/54/54`,
     author: `Robert`,
     rating: 4,
@@ -45,6 +50,7 @@ export default [
       Sit amet nisl purus in mollis nunc sed id semper.`
   },
   {
+    id: `6`,
     avatar: `http://placebeard.it/g/54/54`,
     author: `Terrence`,
     rating: 5,
@@ -56,6 +62,7 @@ export default [
       lobortis feugiat vivamus at.`
   },
   {
+    id: `7`,
     avatar: `http://placebeard.it/g/54/54`,
     author: `Francis`,
     rating: 4,
@@ -64,6 +71,7 @@ export default [
       Nulla facilisi morbi tempus iaculis. Eget egestas purus viverra accumsan in nisl.`
   },
   {
+    id: `8`,
     avatar: `http://placebeard.it/g/54/54`,
     author: `Roger`,
     rating: 5,
@@ -72,6 +80,7 @@ export default [
       Nulla facilisi morbi tempus iaculis. Eget egestas purus viverra accumsan in nisl.`
   },
   {
+    id: `9`,
     avatar: `http://placebeard.it/g/54/54`,
     author: `James`,
     rating: 3,
@@ -81,6 +90,7 @@ export default [
       tincidunt vitae semper quis lectus nulla at. Sed sed risus pretium quam vulputate.`
   },
   {
+    id: `10`,
     avatar: `http://placebeard.it/g/54/54`,
     author: `George`,
     rating: 5,

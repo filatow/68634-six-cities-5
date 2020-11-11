@@ -1,5 +1,4 @@
 import React, {PureComponent, Fragment} from "react";
-import {getUniqueId} from "../../utils";
 import {Grade} from "../../consts";
 
 
@@ -28,7 +27,7 @@ export default class NewCommentForm extends PureComponent {
     const ratingRadioGroup = Object.values(Grade).map((grade, ind, arr) => {
       return (
         <Fragment
-          key={getUniqueId()}>
+          key={grade}>
           <input
             className="form__rating-input visually-hidden"
             name="rating" id={`${arr.length - ind}-stars`} type="radio"

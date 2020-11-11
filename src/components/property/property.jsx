@@ -2,7 +2,6 @@ import React from "react";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 
-import {getUniqueId} from "../../utils";
 import {Validation} from "../../validation";
 
 import Map from "../map/map";
@@ -20,7 +19,7 @@ const Property = (props) => {
     return (
       <div
         className="property__image-wrapper"
-        key={getUniqueId()}>
+        key={photo}>
         <img className="property__image" src={photo} alt="Photo studio"/>
       </div>
     );
@@ -35,7 +34,7 @@ const Property = (props) => {
     return (
       <li
         className="property__inside-item"
-        key={getUniqueId()} >
+        key={amenity} >
         {amenity}
       </li>
     );
