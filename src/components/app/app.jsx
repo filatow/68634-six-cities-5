@@ -16,7 +16,7 @@ const App = (props) => {
       <Switch>
         <Route exact path="/">
           <Main
-            offers={offers}
+            // offers={offers}
             cities={cities} />
         </Route>
         {/* <Route exact

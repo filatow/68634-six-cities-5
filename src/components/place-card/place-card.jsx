@@ -8,15 +8,12 @@ import {getStarsActiveWidth} from "../../utils";
 
 const PlaceCard = (props) => {
   const {
-    cardExtraClass = ``,
-    imageWrapperExtraClass = ``,
-    infoExtraClass = ``,
+    cardExtraClass,
+    imageWrapperExtraClass,
+    infoExtraClass,
     offer,
-    image = {
-      width: 260,
-      height: 200
-    },
-    onMouseEnter = () => {}
+    image,
+    onMouseEnter
   } = props;
 
   const articleClassName = `place-card ${cardExtraClass}`;
@@ -82,6 +79,17 @@ PlaceCard.propTypes = {
     height: PropTypes.number.isRequired
   }),
   onMouseEnter: PropTypes.func
+};
+
+PlaceCard.defaultProps = {
+  cardExtraClass: ``,
+  imageWrapperExtraClass: ``,
+  infoExtraClass: ``,
+  image: {
+    width: 260,
+    height: 200
+  },
+  onMouseEnter: () => null
 };
 
 export default PlaceCard;

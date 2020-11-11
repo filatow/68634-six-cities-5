@@ -1,20 +1,27 @@
 import React from "react";
+import {connect} from "react-redux";
 import PropTypes from "prop-types";
-import CityPlaceList from "../city-place-list/city-place-list";
 
-import {Validation} from "../../validation";
 import {Link} from "react-router-dom";
+import {Validation} from "../../validation";
+
+import CityPlaceList from "../city-place-list/city-place-list";
 import Map from "../map/map";
 import LocationList from "../location-list/location-list";
 
 import {AMSTERDAM_COORDS} from "../../consts";
 
 const Main = (props) => {
-  const {offers, cities} = props;
+  const {
+    offers,
+    // markers,
+    cities,
+    currentCity
+  } = props;
   const offerAmount = offers.length;
-  const offersCoords = offers.map((offer) => {
-    return offer.coords;
-  });
+  // const offersCoords = offers.map((offer) => {
+  //   return offer.coords;
+  // });
 
   return (
     <div className="page page--gray page--main">
@@ -56,7 +63,7 @@ const Main = (props) => {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{offerAmount} places to stay in Amsterdam</b>
+              <b className="places__found">{offerAmount} places to stay in {currentCity}</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex="0">
@@ -86,7 +93,7 @@ const Main = (props) => {
             <div className="cities__right-section">
               <section className="cities__map map">
                 <Map
-                  markers={offersCoords}
+                  // markers={markers}
                   city={AMSTERDAM_COORDS} />
               </section>
             </div>
@@ -99,7 +106,17 @@ const Main = (props) => {
 
 Main.propTypes = {
   offers: PropTypes.arrayOf(Validation.OFFER).isRequired,
-  cities: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+  // markers: PropTypes.arrayOf(
+  //     PropTypes.arrayOf(PropTypes.number.isRequired).isRequired).isRequired,
+  cities: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  currentCity: PropTypes.string.isRequired
 };
 
-export default Main;
+const mapStateToProps = (state) => ({
+  currentCity: state.city,
+  offers: state.offers,
+  // markers: state.markers
+});
+
+export {Main};
+export default connect(mapStateToProps)(Main);

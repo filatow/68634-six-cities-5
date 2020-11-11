@@ -1,11 +1,12 @@
-import {extend} from "../utils";
+import {extend, extractLatLngsFromOffers} from "../utils";
 import {ActionType} from "./action";
 
-import {offers} from "../mocks/offers";
+import offers from "../mocks/offers";
 
 const initialState = {
-  city: `Amsterdam`,
-  offers
+  city: `Paris`,
+  offers,
+  markersLatLngs: extractLatLngsFromOffers(offers)
 };
 
 const reducer = (state = initialState, action) => {
@@ -17,6 +18,10 @@ const reducer = (state = initialState, action) => {
     case ActionType.SET_OFFERS:
       return extend(state, {
         offers: action.offers
+      });
+    case ActionType.SET_MARKERS_LATLNGS:
+      return extend(state, {
+        markersLatLngs: action.markersLatLngs
       });
     default:
       return state;

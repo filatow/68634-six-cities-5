@@ -1,3 +1,5 @@
+import leaflet from "leaflet";
+
 export const getUniqueId = () => {
   return `xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx`
     .replace(/[xy]/g, (c) => {
@@ -13,3 +15,7 @@ export const getStarsActiveWidth = (rating) => {
 export const extend = (a, b) => {
   return Object.assign({}, a, b);
 };
+
+export const extractLatLngsFromOffers = (offers) => offers.map((offer) => {
+  return leaflet.latLng(offer.coords);
+});
