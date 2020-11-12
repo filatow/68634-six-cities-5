@@ -7,7 +7,11 @@ import {Validation} from "../../validation";
 
 import PlaceCard from "../place-card/place-card";
 
-const CityPlaceCard = ({offer, onMouseEnter}) => {
+const CityPlaceCard = (props) => {
+  const {offer, isActive, onMouseEnter} = props;
+  if (isActive) {
+    // console.log(offer.id);
+  }
   return (
     <PlaceCard
       cardExtraClass={`cities__place-card`}
@@ -21,7 +25,8 @@ const CityPlaceCard = ({offer, onMouseEnter}) => {
 
 CityPlaceCard.propTypes = {
   offer: Validation.OFFER,
-  onMouseEnter: PropTypes.func.isRequired
+  isActive: PropTypes.bool.isRequired,
+  onMouseEnter: PropTypes.func.isRequired,
 };
 
 export default CityPlaceCard;

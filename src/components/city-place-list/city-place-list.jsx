@@ -1,46 +1,34 @@
-import React, {PureComponent} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import CityPlaceCard from "../city-place-card/city-place-card";
 
+import withActiveCard from "../../hocs/with-active-card/with-active-card";
 import {Validation} from "../../validation";
 
-export default class CityPlaceList extends PureComponent {
-  constructor(props) {
-    super();
-    this.state = {
-      activeCard: props.offers[0].id
-    };
+const CityPlaceList = (props) => {
+  const {offers, activeCardId, onMouseEnter} = props;
 
-    this.handleCardMouseEnter = this.handleCardMouseEnter.bind(this);
-  }
-
-  handleCardMouseEnter(id) {
-    if (this.state.activeCard !== id) {
-      this.setState({
-        activeCard: id
-      });
-    }
-  }
-
-  render() {
-    const {offers} = this.props;
-    const places = offers.map((offer) => {
-      return (
-        <CityPlaceCard
-          key = {offer.id}
-          offer = {offer}
-          onMouseEnter = {this.handleCardMouseEnter} />
-      );
-    });
-
-    return (
-      <div className="cities__places-list places__list tabs__content">
-        {places}
-      </div>
-    );
-  }
-}
+  return (
+    <div className="cities__places-list places__list tabs__content">
+      {
+        offers.map((offer) => {
+          return (
+            <CityPlaceCard
+              key = {offer.id}
+              offer = {offer}
+              isActive = {offer.id === activeCardId}
+              onMouseEnter = {onMouseEnter} />
+          );
+        })
+      }
+    </div>
+  );
+};
 
 CityPlaceList.propTypes = {
-  offers: PropTypes.arrayOf(Validation.OFFER).isRequired
+  offers: PropTypes.arrayOf(Validation.OFFER).isRequired,
+  activeCardId: PropTypes.string.isRequired,
+  onMouseEnter: PropTypes.func.isRequired
 };
+
+export default withActiveCard(CityPlaceList);

@@ -11,6 +11,8 @@ import LocationList from "../location-list/location-list";
 
 import {AMSTERDAM_COORDS} from "../../consts";
 
+// const WithActiveCardCityPlaceList = withActiveCard(CityPlaceList);
+
 const Main = (props) => {
   const {
     offers,
@@ -19,9 +21,6 @@ const Main = (props) => {
     currentCity
   } = props;
   const offerAmount = offers.length;
-  // const offersCoords = offers.map((offer) => {
-  //   return offer.coords;
-  // });
 
   return (
     <div className="page page--gray page--main">
@@ -87,6 +86,8 @@ const Main = (props) => {
                 </select>
                 --> */}
               </form>
+              {/* <WithActiveCardCityPlaceList
+                offers = {offers} /> */}
               <CityPlaceList
                 offers = {offers} />
             </section>
