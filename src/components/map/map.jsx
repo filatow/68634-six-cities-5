@@ -26,9 +26,9 @@ class Map extends PureComponent {
     });
   }
 
-  _addMarker(latLang) {
+  _addMarker(latLng) {
     const marker = leaflet
-      .marker(latLang, {icon: this._icon})
+      .marker(latLng, {icon: this._icon})
       .addTo(this._map);
     this._markers.push(marker);
   }
@@ -50,8 +50,8 @@ class Map extends PureComponent {
       })
       .addTo(this._map);
 
-    markersLatLngs.forEach((latLang) => {
-      this._addMarker(latLang);
+    markersLatLngs.forEach((latLng) => {
+      this._addMarker(latLng);
     });
   }
 
@@ -62,8 +62,8 @@ class Map extends PureComponent {
     });
     this._markers.splice(0, this._markers.length);
 
-    this.props.markersLatLngs.forEach((latLang) => {
-      this._addMarker(latLang);
+    this.props.markersLatLngs.forEach((latLng) => {
+      this._addMarker(latLng);
     });
   }
 

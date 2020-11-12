@@ -2,6 +2,9 @@ import React from "react";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 
+import {connect} from "react-redux";
+import {ActionCreator} from "../../store/action";
+
 import {Validation} from "../../validation";
 
 import Map from "../map/map";
@@ -11,7 +14,7 @@ import NearPlaces from '../near-place-list/near-place-list';
 import {AMSTERDAM_COORDS} from "../../consts";
 
 const Property = (props) => {
-  const {offer, neighbourOffers} = props;
+  const {offer, neighbourOffers, setMarkersLatLngs} = props;
   const {
     photos, header, isPremium, type, bedroomCount, rating, guestCount,
     rentPerNight, amenities, host, description, reviews} = offer;
@@ -40,9 +43,7 @@ const Property = (props) => {
     );
   });
   const superHostClass = host.isSuper ? `property__avatar-wrapper--pro` : ``;
-  const neighbourOffersCoords = neighbourOffers.map((neighbourOffer) => {
-    return neighbourOffer.coords;
-  });
+  setMarkersLatLngs(neighbourOffers);
 
 
   return (
@@ -146,7 +147,6 @@ const Property = (props) => {
           </div>
           <section className="property__map map">
             <Map
-              markers={neighbourOffersCoords}
               city={AMSTERDAM_COORDS} />
           </section>
         </section>
@@ -161,7 +161,15 @@ const Property = (props) => {
 
 Property.propTypes = {
   offer: Validation.OFFER,
-  neighbourOffers: PropTypes.arrayOf(Validation.OFFER)
+  neighbourOffers: PropTypes.arrayOf(Validation.OFFER),
+  setMarkersLatLngs: PropTypes.func.isRequired
 };
 
-export default Property;
+const mapDispatchToProps = (dispatch) => ({
+  setMarkersLatLngs(offers) {
+    dispatch(ActionCreator.setMarkersLatLngs(offers));
+  },
+});
+
+export {Property};
+export default connect(null, mapDispatchToProps)(Property);
