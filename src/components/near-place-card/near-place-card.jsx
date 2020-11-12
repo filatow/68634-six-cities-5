@@ -9,7 +9,7 @@ import PlaceCard from "../place-card/place-card";
 const NearPlaceCard = ({offer}) => {
   return (
     <PlaceCard
-      articleExtraClass={`near-places__card`}
+      cardExtraClass={`near-places__card`}
       imageWrapperExtraClass={`near-places__image-wrapper`}
       offer={offer} />
   );
