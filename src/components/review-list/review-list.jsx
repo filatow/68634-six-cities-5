@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import NewCommentForm from "../new-comment-form/new-comment-form";
-// import {getUniqueId} from "../../utils";
 import {Validation} from "../../validation";
 import Review from "../review/review";
 

@@ -13,7 +13,9 @@ const CityPlaceCard = ({offer, onMouseEnter}) => {
       cardExtraClass={`cities__place-card`}
       imageWrapperExtraClass={`cities__image-wrapper`}
       offer={offer}
-      onMouseEnter={onMouseEnter} />
+      // onMouseEnter={onMouseEnter} />
+      onMouseEnter={() => onMouseEnter(offer.id)} />
+
   );
 };
 

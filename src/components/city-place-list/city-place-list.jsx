@@ -11,14 +11,13 @@ export default class CityPlaceList extends PureComponent {
       activeCard: props.offers[0].id
     };
 
-    this._handleCardMouseEnter = this._handleCardMouseEnter.bind(this);
+    this.handleCardMouseEnter = this.handleCardMouseEnter.bind(this);
   }
 
-  _handleCardMouseEnter(event) {
-    const currentCard = event.target.closest(`.place-card`);
-    if (this.state.activeCard !== currentCard) {
+  handleCardMouseEnter(id) {
+    if (this.state.activeCard !== id) {
       this.setState({
-        activeCard: event.target.closest(`.place-card`).id
+        activeCard: id
       });
     }
   }
@@ -30,7 +29,7 @@ export default class CityPlaceList extends PureComponent {
         <CityPlaceCard
           key = {offer.id}
           offer = {offer}
-          onMouseEnter = {this._handleCardMouseEnter} />
+          onMouseEnter = {this.handleCardMouseEnter} />
       );
     });
 
