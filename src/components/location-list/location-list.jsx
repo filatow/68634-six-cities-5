@@ -12,7 +12,7 @@ const LocationList = (props) => {
     cities,
     currentCity,
     offers,
-    changeCity,
+    onChangeCity,
     setOffers,
     setMarkersLatLngs
   } = props;
@@ -24,12 +24,14 @@ const LocationList = (props) => {
         className="locations__item"
         key={ind}
         onClick={() => {
-          changeCity(city);
+          onChangeCity(city);
+          // временный код \/
           const newOffers = offers.slice();
           const shiftedOffer = newOffers.shift();
           newOffers.push(shiftedOffer);
           setOffers(newOffers);
           setMarkersLatLngs(newOffers);
+          // временный код /\
         }}
       >
         <a className={`locations__item-link tabs__item ${active}`} href="#">
@@ -52,7 +54,7 @@ LocationList.propTypes = {
   cities: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   currentCity: PropTypes.string.isRequired,
   offers: PropTypes.arrayOf(Validation.OFFER).isRequired,
-  changeCity: PropTypes.func.isRequired,
+  onChangeCity: PropTypes.func.isRequired,
   setOffers: PropTypes.func.isRequired,
   setMarkersLatLngs: PropTypes.func.isRequired,
 };
@@ -63,7 +65,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  changeCity(city) {
+  onChangeCity(city) {
     dispatch(ActionCreator.changeCity(city));
   },
 
