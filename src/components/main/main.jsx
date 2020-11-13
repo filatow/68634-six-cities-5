@@ -11,12 +11,9 @@ import LocationList from "../location-list/location-list";
 
 import {AMSTERDAM_COORDS} from "../../consts";
 
-// const WithActiveCardCityPlaceList = withActiveCard(CityPlaceList);
-
 const Main = (props) => {
   const {
     offers,
-    // markers,
     cities,
     currentCity
   } = props;
@@ -86,15 +83,12 @@ const Main = (props) => {
                 </select>
                 --> */}
               </form>
-              {/* <WithActiveCardCityPlaceList
-                offers = {offers} /> */}
               <CityPlaceList
                 offers = {offers} />
             </section>
             <div className="cities__right-section">
               <section className="cities__map map">
                 <Map
-                  // markers={markers}
                   city={AMSTERDAM_COORDS} />
               </section>
             </div>
@@ -107,8 +101,6 @@ const Main = (props) => {
 
 Main.propTypes = {
   offers: PropTypes.arrayOf(Validation.OFFER).isRequired,
-  // markers: PropTypes.arrayOf(
-  //     PropTypes.arrayOf(PropTypes.number.isRequired).isRequired).isRequired,
   cities: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   currentCity: PropTypes.string.isRequired
 };
@@ -116,7 +108,6 @@ Main.propTypes = {
 const mapStateToProps = (state) => ({
   currentCity: state.city,
   offers: state.offers,
-  // markers: state.markers
 });
 
 export {Main};

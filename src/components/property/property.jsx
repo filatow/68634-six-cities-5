@@ -9,7 +9,7 @@ import {Validation} from "../../validation";
 
 import Map from "../map/map";
 import ReviewList from "../review-list/review-list";
-import NearPlaces from '../near-place-list/near-place-list';
+import NearPlaceList from '../near-place-list/near-place-list';
 
 import {AMSTERDAM_COORDS} from "../../consts";
 
@@ -43,7 +43,7 @@ const Property = (props) => {
     );
   });
   const superHostClass = host.isSuper ? `property__avatar-wrapper--pro` : ``;
-  setMarkersLatLngs(neighbourOffers);
+  setMarkersLatLngs([offer, ...neighbourOffers]);
 
 
   return (
@@ -151,8 +151,9 @@ const Property = (props) => {
           </section>
         </section>
         <div className="container">
-          <NearPlaces
-            offers={neighbourOffers} />
+          <NearPlaceList
+            offer={offer}
+            neighbours={neighbourOffers} />
         </div>
       </main>
     </div>

@@ -1,7 +1,7 @@
 import React, {PureComponent} from "react";
-import PropTypes from "prop-types";
 
-import {Validation} from "../../validation";
+// import PropTypes from "prop-types";
+// import {Validation} from "../../validation";
 
 const withActiveCard = (Component) => {
   class WithActiveCard extends PureComponent {
@@ -9,17 +9,19 @@ const withActiveCard = (Component) => {
       super(props);
 
       this.state = {
-        activeCardId: props.offers[0].id
+        activeCardId: ``
       };
 
-      this.setActiveCard = this.setActiveCard.bind(this);
+      this.setActiveCardId = this.setActiveCardId.bind(this);
     }
 
-    setActiveCard(id) {
+    setActiveCardId(id) {
       if (this.state.activeCardId !== id) {
         this.setState({
           activeCardId: id
-        });
+        }
+        , () => console.log(`activeCardId ::`, this.state.activeCardId)
+        );
       }
     }
 
@@ -28,15 +30,15 @@ const withActiveCard = (Component) => {
         <Component
           {...this.props}
           activeCardId={this.state.activeCardId}
-          onMouseEnter={this.setActiveCard} />
+          setActiveCardId={this.setActiveCardId} />
       );
     }
 
   }
 
-  WithActiveCard.propTypes = {
-    offers: PropTypes.arrayOf(Validation.OFFER).isRequired
-  };
+  // WithActiveCard.propTypes = {
+
+  // };
 
   return WithActiveCard;
 };

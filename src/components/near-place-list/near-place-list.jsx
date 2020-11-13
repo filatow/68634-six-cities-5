@@ -1,18 +1,27 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import withActiveCard from "../../hocs/with-active-card/with-active-card";
 import {Validation} from "../../validation";
+
 import NearPlaceCard from "../near-place-card/near-place-card";
 
 
-const NearPlaces = ({offers}) => {
-  const nearPlaces = offers.map((offer) => {
+const NearPlaceList = (props) => {
+  const {
+    offer,
+    neighbours,
+    setActiveCardId
+  } = props;
+  const nearPlaces = neighbours.map((neighbour) => {
     return (
       <NearPlaceCard
-        key = {offer.id}
-        offer = {offer} />
+        key={neighbour.id}
+        offer={neighbour}
+      />
     );
   });
+  setActiveCardId(offer.id);
 
   return (
     <section className="near-places places">
@@ -26,8 +35,10 @@ const NearPlaces = ({offers}) => {
   );
 };
 
-NearPlaces.propTypes = {
-  offers: PropTypes.arrayOf(Validation.OFFER).isRequired
+NearPlaceList.propTypes = {
+  offer: Validation.OFFER,
+  neighbours: PropTypes.arrayOf(Validation.OFFER).isRequired,
+  setActiveCardId: PropTypes.func.isRequired
 };
 
-export default NearPlaces;
+export default withActiveCard(NearPlaceList);
