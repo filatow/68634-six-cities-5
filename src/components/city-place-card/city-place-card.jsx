@@ -1,32 +1,32 @@
 import React from "react";
-// import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 
 import {Validation} from "../../validation";
-// import {CardType} from "../../consts";
 
 import PlaceCard from "../place-card/place-card";
 
 const CityPlaceCard = (props) => {
-  const {offer, isActive, onMouseEnter} = props;
-  if (isActive) {
-    // console.log(offer.id);
-  }
+  const {
+    offer,
+    onMouseEnter,
+    onMouseLeave
+  } = props;
+
   return (
     <PlaceCard
       cardExtraClass={`cities__place-card`}
       imageWrapperExtraClass={`cities__image-wrapper`}
       offer={offer}
-      // onMouseEnter={onMouseEnter} />
-      onMouseEnter={() => onMouseEnter(offer.id)} />
+      onMouseEnter={() => onMouseEnter(offer.id)}
+      onMouseLeave={onMouseLeave} />
 
   );
 };
 
 CityPlaceCard.propTypes = {
   offer: Validation.OFFER,
-  isActive: PropTypes.bool.isRequired,
   onMouseEnter: PropTypes.func.isRequired,
+  onMouseLeave: PropTypes.func.isRequired
 };
 
 export default CityPlaceCard;

@@ -5,16 +5,25 @@ import PropTypes from "prop-types";
 
 import "leaflet/dist/leaflet.css";
 import "./map.css";
+
+// import offers from "../../mocks/offers";
+import {Validation} from "../../validation";
+
 class Map extends PureComponent {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this._markers = [];
   }
 
   _mapInit(city, zoom) {
-    this._icon = leaflet.icon({
+    this._iconRegular = leaflet.icon({
       iconUrl: `img/pin.svg`,
+      iconSize: [30, 30]
+    });
+
+    this._iconActive = leaflet.icon({
+      iconUrl: `img/pin-active.svg`,
       iconSize: [30, 30]
     });
 
@@ -28,18 +37,18 @@ class Map extends PureComponent {
 
   _addMarker(latLng) {
     const marker = leaflet
-      .marker(latLng, {icon: this._icon})
+      .marker(latLng, {icon: this._iconRegular})
       .addTo(this._map);
     this._markers.push(marker);
   }
 
   componentDidMount() {
-
     const {
       markersLatLngs,
       city,
       zoom
     } = this.props;
+
 
     this._mapInit(city, zoom);
     // this._map.setView(city, zoom);
@@ -56,15 +65,29 @@ class Map extends PureComponent {
   }
 
   componentDidUpdate() {
+    const {mapOffers, activeMarkerOfferId, markersLatLngs} = this.props;
 
-    this._markers.map((marker) => {
-      marker.remove();
-    });
-    this._markers.splice(0, this._markers.length);
-
-    this.props.markersLatLngs.forEach((latLng) => {
+    this._markers.forEach((marker) => marker.remove());
+    markersLatLngs.forEach((latLng) => {
       this._addMarker(latLng);
     });
+
+    if (activeMarkerOfferId) {
+      const activeOffer = mapOffers.find((offer) => offer.id === activeMarkerOfferId);
+      const activeOfferLatLng = leaflet.latLng(activeOffer.coords);
+
+      this._markers.forEach((marker) => {
+        if (marker.getLatLng().equals(activeOfferLatLng)) {
+          marker.setIcon(this._iconActive);
+        }
+      });
+    } else {
+      this._markers.forEach((marker) => {
+        if (Object.is(marker.getIcon(), this._iconActive)) {
+          marker.setIcon(this._iconRegular);
+        }
+      });
+    }
   }
 
   render() {
@@ -76,7 +99,9 @@ class Map extends PureComponent {
 
 
 Map.propTypes = {
+  mapOffers: PropTypes.arrayOf(Validation.OFFER).isRequired,
   markersLatLngs: PropTypes.arrayOf(PropTypes.object).isRequired,
+  activeMarkerOfferId: PropTypes.string.isRequired,
   city: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
   zoom: PropTypes.number
 };
@@ -86,8 +111,9 @@ Map.defaultProps = {
 };
 
 const mapStateToProps = (state) => ({
-  offers: state.offers,
-  markersLatLngs: state.markersLatLngs
+  mapOffers: state.mapOffers,
+  markersLatLngs: state.markersLatLngs,
+  activeMarkerOfferId: state.activeMarkerOfferId
 });
 
 export {Map};

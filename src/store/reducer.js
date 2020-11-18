@@ -5,8 +5,10 @@ import offers from "../mocks/offers";
 
 const initialState = {
   city: `Paris`,
-  offers,
-  markersLatLngs: extractLatLngsFromOffers(offers)
+  cityOffers: offers,
+  mapOffers: offers,
+  markersLatLngs: extractLatLngsFromOffers(offers),
+  activeMarkerOfferId: ``
 };
 
 const reducer = (state = initialState, action) => {
@@ -15,13 +17,25 @@ const reducer = (state = initialState, action) => {
       return extend(state, {
         city: action.city
       });
-    case ActionType.SET_OFFERS:
+    case ActionType.SET_CITY_OFFERS:
       return extend(state, {
-        offers: action.offers
+        cityOffers: action.cityOffers
+      });
+    case ActionType.SET_MAP_OFFERS:
+      return extend(state, {
+        mapOffers: action.mapOffers
       });
     case ActionType.SET_MARKERS_LATLNGS:
       return extend(state, {
         markersLatLngs: action.markersLatLngs
+      });
+    case ActionType.SET_ACTIVE_MARKER_OFFER_ID:
+      return extend(state, {
+        activeMarkerOfferId: action.activeMarkerOfferId
+      });
+    case ActionType.RESET_ACTIVE_MARKER_OFFER_ID:
+      return extend(state, {
+        activeMarkerOfferId: action.activeMarkerOfferId
       });
     default:
       return state;

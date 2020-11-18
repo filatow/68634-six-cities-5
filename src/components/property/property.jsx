@@ -43,7 +43,9 @@ const Property = (props) => {
     );
   });
   const superHostClass = host.isSuper ? `property__avatar-wrapper--pro` : ``;
-  setMarkersLatLngs([offer, ...neighbourOffers]);
+
+  const mapOffers = [offer, ...neighbourOffers];
+  setMarkersLatLngs(mapOffers);
 
 
   return (

@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 
 import {Validation} from "../../validation";
 import {getStarsActiveWidth} from "../../utils";
-// import {CardType} from "../../consts";
 
 const PlaceCard = (props) => {
   const {
@@ -13,7 +12,8 @@ const PlaceCard = (props) => {
     infoExtraClass,
     offer,
     image,
-    onMouseEnter
+    onMouseEnter,
+    onMouseLeave
   } = props;
 
   const articleClassName = `place-card ${cardExtraClass}`;
@@ -32,7 +32,8 @@ const PlaceCard = (props) => {
     <article
       className={articleClassName}
       id={id}
-      onMouseEnter={onMouseEnter} >
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave} >
 
       {isPremium && premiumMark}
 
@@ -78,7 +79,8 @@ PlaceCard.propTypes = {
     width: PropTypes.number.isRequired,
     height: PropTypes.number.isRequired
   }),
-  onMouseEnter: PropTypes.func
+  onMouseEnter: PropTypes.func.isRequired,
+  onMouseLeave: PropTypes.func.isRequired
 };
 
 PlaceCard.defaultProps = {
@@ -89,7 +91,8 @@ PlaceCard.defaultProps = {
     width: 260,
     height: 200
   },
-  onMouseEnter: () => null
+  onMouseEnter: () => null,
+  onMouseLeave: () => null
 };
 
 export default PlaceCard;

@@ -1,46 +1,41 @@
 import React, {PureComponent} from "react";
 
-// import PropTypes from "prop-types";
-// import {Validation} from "../../validation";
+import PropTypes from "prop-types";
+
+import {connect} from "react-redux";
+import {ActionCreator} from "../../store/action";
 
 const withActiveCard = (Component) => {
   class WithActiveCard extends PureComponent {
     constructor(props) {
       super(props);
-
-      this.state = {
-        activeCardId: ``
-      };
-
-      this.setActiveCardId = this.setActiveCardId.bind(this);
-    }
-
-    setActiveCardId(id) {
-      if (this.state.activeCardId !== id) {
-        this.setState({
-          activeCardId: id
-        }
-        , () => console.log(`activeCardId ::`, this.state.activeCardId)
-        );
-      }
     }
 
     render() {
       return (
         <Component
           {...this.props}
-          activeCardId={this.state.activeCardId}
-          setActiveCardId={this.setActiveCardId} />
+        />
       );
     }
 
   }
 
-  // WithActiveCard.propTypes = {
+  WithActiveCard.propTypes = {
+    setActiveMarkerOfferId: PropTypes.func.isRequired,
+    resetActiveMarkerOfferId: PropTypes.func.isRequired
+  };
 
-  // };
+  const mapDispatchToProps = (dispatch) => ({
+    setActiveMarkerOfferId(id) {
+      dispatch(ActionCreator.setActiveMarkerOfferId(id));
+    },
+    resetActiveMarkerOfferId() {
+      dispatch(ActionCreator.resetActiveMarkerOfferId());
+    },
+  });
 
-  return WithActiveCard;
+  return connect(null, mapDispatchToProps)(WithActiveCard);
 };
 
 export default withActiveCard;

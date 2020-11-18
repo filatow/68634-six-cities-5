@@ -11,7 +11,7 @@ const NearPlaceList = (props) => {
   const {
     offer,
     neighbours,
-    setActiveCardId
+    setActiveMarkerOfferId
   } = props;
   const nearPlaces = neighbours.map((neighbour) => {
     return (
@@ -21,7 +21,8 @@ const NearPlaceList = (props) => {
       />
     );
   });
-  setActiveCardId(offer.id);
+
+  setActiveMarkerOfferId(offer.id);
 
   return (
     <section className="near-places places">
@@ -38,7 +39,7 @@ const NearPlaceList = (props) => {
 NearPlaceList.propTypes = {
   offer: Validation.OFFER,
   neighbours: PropTypes.arrayOf(Validation.OFFER).isRequired,
-  setActiveCardId: PropTypes.func.isRequired
+  setActiveMarkerOfferId: PropTypes.func.isRequired
 };
 
 export default withActiveCard(NearPlaceList);

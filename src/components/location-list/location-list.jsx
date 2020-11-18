@@ -13,7 +13,8 @@ const LocationList = (props) => {
     currentCity,
     offers,
     onChangeCity,
-    setOffers,
+    setCityOffers,
+    setMapOffers,
     setMarkersLatLngs
   } = props;
 
@@ -29,7 +30,8 @@ const LocationList = (props) => {
           const newOffers = offers.slice();
           const shiftedOffer = newOffers.shift();
           newOffers.push(shiftedOffer);
-          setOffers(newOffers);
+          setCityOffers(newOffers);
+          setMapOffers(newOffers);
           setMarkersLatLngs(newOffers);
           // временный код /\
         }}
@@ -55,13 +57,14 @@ LocationList.propTypes = {
   currentCity: PropTypes.string.isRequired,
   offers: PropTypes.arrayOf(Validation.OFFER).isRequired,
   onChangeCity: PropTypes.func.isRequired,
-  setOffers: PropTypes.func.isRequired,
+  setCityOffers: PropTypes.func.isRequired,
+  setMapOffers: PropTypes.func.isRequired,
   setMarkersLatLngs: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   currentCity: state.city,
-  offers: state.offers
+  offers: state.cityOffers
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -69,8 +72,12 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreator.changeCity(city));
   },
 
-  setOffers(offers) {
-    dispatch(ActionCreator.setOffers(offers));
+  setCityOffers(cityOffers) {
+    dispatch(ActionCreator.setCityOffers(cityOffers));
+  },
+
+  setMapOffers(mapOffers) {
+    dispatch(ActionCreator.setCityOffers(mapOffers));
   },
 
   setMarkersLatLngs(offers) {

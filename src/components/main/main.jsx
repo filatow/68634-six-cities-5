@@ -1,6 +1,9 @@
 import React from "react";
-import {connect} from "react-redux";
+import {} from "react-redux";
 import PropTypes from "prop-types";
+
+import {connect} from "react-redux";
+// import {ActionCreator} from "../../store/action";
 
 import {Link} from "react-router-dom";
 import {Validation} from "../../validation";
@@ -9,15 +12,17 @@ import CityPlaceList from "../city-place-list/city-place-list";
 import Map from "../map/map";
 import LocationList from "../location-list/location-list";
 
+// import offers from "../../mocks/offers";
 import {AMSTERDAM_COORDS} from "../../consts";
 
 const Main = (props) => {
   const {
-    offers,
+    cityOffers,
+    // mapOffers,
     cities,
     currentCity
   } = props;
-  const offerAmount = offers.length;
+  const offerAmount = cityOffers.length;
 
   return (
     <div className="page page--gray page--main">
@@ -84,7 +89,7 @@ const Main = (props) => {
                 --> */}
               </form>
               <CityPlaceList
-                offers = {offers} />
+                cityOffers = {cityOffers} />
             </section>
             <div className="cities__right-section">
               <section className="cities__map map">
@@ -100,15 +105,28 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  offers: PropTypes.arrayOf(Validation.OFFER).isRequired,
+  cityOffers: PropTypes.arrayOf(Validation.OFFER).isRequired,
+  // mapOffers: PropTypes.arrayOf(Validation.OFFER).isRequired,
   cities: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   currentCity: PropTypes.string.isRequired
 };
 
 const mapStateToProps = (state) => ({
   currentCity: state.city,
-  offers: state.offers,
+  cityOffers: state.cityOffers,
+  // mapOffers: state.mapOffers
 });
+
+// const mapDispatchToProps = (dispatch) => ({
+//   setCityOffers(cityOffers) {
+//     dispatch(ActionCreator.setCityOffers(cityOffers));
+//   },
+
+//   setMapOffers(mapOffers) {
+//     dispatch(ActionCreator.setCityOffers(mapOffers));
+//   }
+// });
 
 export {Main};
 export default connect(mapStateToProps)(Main);
+// export default connect(mapStateToProps, mapDispatchToProps)(Main);

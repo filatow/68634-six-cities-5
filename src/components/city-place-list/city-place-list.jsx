@@ -6,18 +6,22 @@ import withActiveCard from "../../hocs/with-active-card/with-active-card";
 import {Validation} from "../../validation";
 
 const CityPlaceList = (props) => {
-  const {offers, activeCardId, setActiveCardId} = props;
+  const {
+    cityOffers,
+    setActiveMarkerOfferId,
+    resetActiveMarkerOfferId
+  } = props;
 
   return (
     <div className="cities__places-list places__list tabs__content">
       {
-        offers.map((offer) => {
+        cityOffers.map((offer) => {
           return (
             <CityPlaceCard
               key = {offer.id}
               offer = {offer}
-              isActive = {offer.id === activeCardId}
-              onMouseEnter = {setActiveCardId} />
+              onMouseEnter = {setActiveMarkerOfferId}
+              onMouseLeave = {resetActiveMarkerOfferId} />
           );
         })
       }
@@ -26,9 +30,9 @@ const CityPlaceList = (props) => {
 };
 
 CityPlaceList.propTypes = {
-  offers: PropTypes.arrayOf(Validation.OFFER).isRequired,
-  activeCardId: PropTypes.string.isRequired,
-  setActiveCardId: PropTypes.func.isRequired
+  cityOffers: PropTypes.arrayOf(Validation.OFFER).isRequired,
+  setActiveMarkerOfferId: PropTypes.func.isRequired,
+  resetActiveMarkerOfferId: PropTypes.func.isRequired
 };
 
 export default withActiveCard(CityPlaceList);
