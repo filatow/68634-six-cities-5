@@ -5,8 +5,8 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
 
-const withActiveCard = (Component) => {
-  class WithActiveCard extends PureComponent {
+const withActiveMarkerActions = (Component) => {
+  class WithActiveMarkerActions extends PureComponent {
     constructor(props) {
       super(props);
     }
@@ -21,7 +21,7 @@ const withActiveCard = (Component) => {
 
   }
 
-  WithActiveCard.propTypes = {
+  WithActiveMarkerActions.propTypes = {
     setActiveMarkerOfferId: PropTypes.func.isRequired,
     resetActiveMarkerOfferId: PropTypes.func.isRequired
   };
@@ -35,7 +35,7 @@ const withActiveCard = (Component) => {
     },
   });
 
-  return connect(null, mapDispatchToProps)(WithActiveCard);
+  return connect(null, mapDispatchToProps)(WithActiveMarkerActions);
 };
 
-export default withActiveCard;
+export default withActiveMarkerActions;

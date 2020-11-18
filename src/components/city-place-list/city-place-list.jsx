@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import CityPlaceCard from "../city-place-card/city-place-card";
 
-import withActiveCard from "../../hocs/with-active-card/with-active-card";
+import withActiveMarkerActions from "../../hocs/with-active-marker-actions/with-active-marker-actions";
 import {Validation} from "../../validation";
 
 const CityPlaceList = (props) => {
@@ -35,4 +35,4 @@ CityPlaceList.propTypes = {
   resetActiveMarkerOfferId: PropTypes.func.isRequired
 };
 
-export default withActiveCard(CityPlaceList);
+export default withActiveMarkerActions(CityPlaceList);

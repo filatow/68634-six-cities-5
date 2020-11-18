@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import withActiveCard from "../../hocs/with-active-card/with-active-card";
+import withActiveMarkerActions from "../../hocs/with-active-marker-actions/with-active-marker-actions";
 import {Validation} from "../../validation";
 
 import NearPlaceCard from "../near-place-card/near-place-card";
@@ -42,4 +42,4 @@ NearPlaceList.propTypes = {
   setActiveMarkerOfferId: PropTypes.func.isRequired
 };
 
-export default withActiveCard(NearPlaceList);
+export default withActiveMarkerActions(NearPlaceList);
